@@ -3,6 +3,7 @@ import cors from 'cors';
 import { addItem, deleteItem, editItem, getItemById, getItems } from './items.js';
 import entryRouter from './routes/entry-router.js';
 import userRouter from './routes/user-router.js';
+import testRouter from './routes/test-router.js'; // ✅ Added import for test route
 
 const hostname = '127.0.0.1';
 const app = express();
@@ -26,8 +27,11 @@ app.get('/api/', (req, res) => {
 // Users resource endpoints
 app.use('/api/users', userRouter);
 
-// Diary Entries resource endpoints ()
+// Diary Entries resource endpoints
 app.use('/api/entries', entryRouter);
+
+// ✅ Added Test API Route
+app.use('/api/test', testRouter);
 
 // Items (test/mock data) resource endpoints
 app.get('/api/items', getItems);
